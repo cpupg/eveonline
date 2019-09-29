@@ -3,3 +3,4 @@ src/test/
 .classpath
 .project
 target/
+.vscode
