@@ -1,23 +1,16 @@
 package com.cyy;
 
-import java.util.Scanner;
-
-import com.cyy.skills.SkillsCalcator;
+import com.cyy.core.KryptonGoldCalcator;
 
 /**
- * Hello world!
- * line1<br/>
- * line2<br/>
+ * 主方法。
+ * 
+ * 直接运行主方法即可使用功能。也可以改写相关方法来提高性能或其他方面的东西。
  */
 public class App 
 {
-    public static void main( String[] args )
-    {
-        Scanner sc = new Scanner(System.in);
-        SkillsCalcator calc = new SkillsCalcator();
-        System.out.println("输入参数");
-        int num = calc.calcByIncrement(sc.nextInt(), sc.nextInt());
-        System.out.println("脑浆数量:" + num);
-        sc.close();
+    public static void main( String[] args ) {
+        KryptonGoldCalcator calcator = new KryptonGoldCalcator();
+        calcator.calcator();
     }
 }

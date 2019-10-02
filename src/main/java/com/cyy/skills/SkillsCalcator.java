@@ -1,11 +1,13 @@
 package com.cyy.skills;
 
+import java.text.DecimalFormat;
+
 /**
- * <p>SkillsCalcator
- * <p>脑浆计算器
- * <p>脑浆数量取上限，并输出剩余技能点数量。
+ * <p>SkillsCalcator</p>
+ * <p>脑浆计算器</p>
+ * <p>脑浆数量取上限，并输出剩余技能点数量。</p>
  * <p>例如：当前技能点为500W，要增加30W，目前一贯脑浆可以注入50W技能点，所以需要一罐脑浆，
- * 增加50W后，还剩30W，输出30W。
+ * 增加50W后，还剩30W，输出30W。</p>
  */
 public class SkillsCalcator {
   /**
@@ -14,7 +16,6 @@ public class SkillsCalcator {
    * @param incrementSkills 要增加的技能点
    * @return 需要的脑浆数量
    */
-
   public int calcByIncrement(int currentSkills, int incrementSkills){
     int incre = 0;
     int count = 0;
@@ -24,15 +25,16 @@ public class SkillsCalcator {
       incrementSkills = incrementSkills - incre;
       count++;
     }
-    System.out.println("当前技能点:" + currentSkills);
+    System.out.println("嗑药数量：" + count);
+    System.out.println("嗑药后的技能点:" + currentSkills);
     System.out.println("剩余技能点: " + -incrementSkills);
     return count;
   }
 
   /**
    * 通过当前技能和目标技能计算脑浆数量
-   * @param currentSkills
-   * @param targetSkills
+   * @param currentSkills 当前技能
+   * @param targetSkills 想要达到的技能
    * @return 需要的脑浆数量
    */
   public  int caclByTarget(int currentSkills, int targetSkills) {
@@ -43,8 +45,9 @@ public class SkillsCalcator {
       count++;
       currentSkills = currentSkills + incre;
     }
-    System.out.println("当前技能点:" + currentSkills);
-    System.out.println("剩余技能点：" + (currentSkills - targetSkills));
+    System.out.println("嗑药数量：" + new DecimalFormat("###,###,###").format(count));
+    System.out.println("嗑药后的技能点:" + new DecimalFormat("###,###,###,###").format(currentSkills));
+    System.out.println("剩余技能点：" + new DecimalFormat("###,###,###,###").format(currentSkills - targetSkills));
     return count;
   }
 
