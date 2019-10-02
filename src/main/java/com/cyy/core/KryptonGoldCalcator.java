@@ -99,15 +99,19 @@ public class KryptonGoldCalcator {
     double minCny[] = new double[7];
     // 汇率
     double currencyRate = new CurrencyRate().getRate();
-    // 计算plex人民币价格和均价
+    // 平均购买数量和最少购买数量向上取整
+    int averyBuyCont[] = new int[7];
+    int minBuyCont[] = new int[7];
     for(int i = 0; i < 7; i++) {
+      // 计算plex人民币价格和均价
       average[i] = usd[i] *currencyRate / plex[i];
       cny[i] = average[i] * plex[i];
-    }
-    // 计算平均氪金和最少氪金
-    for(int i = 0; i < 7; i++ ) {
+      // 计算平均氪金和最少氪金
       avgCny[i] = plexAverageNum * usd[i] * currencyRate / plex[i];
       minCny[i] = plexMinNum * usd[i] * currencyRate / plex[i];
+      // 计算平均购买数量和最少购买数量取整值
+      averyBuyCont[i] = (int) Math.ceil(plexAverageNum / plex[i] );
+      minBuyCont[i] = (int) Math.ceil(plexMinNum / plex[i] );
     }
     // 表头
     System.out.println("DLC\t\t110PLEX\t\t240PLEX\t\t500PLEX\t\t1100PLEX\t\t2860PLEX\t\t7430PLEX\t\t15400PLEX\t\t");
@@ -127,8 +131,8 @@ public class KryptonGoldCalcator {
     System.out.println();
     // dlc平均购买数量
     System.out.print("平均购买数量\t");
-    for (int i = 0; i < 7; i++ ) {
-      System.out.print(decimalFormat.format(plexAverageNum / plex[i]) + "\t\t");
+    for (int var: plex ) {
+      System.out.print(decimalFormat.format(plexAverageNum / var) + "\t\t");
     }
     System.out.println();
     // 平均人民币氪金
@@ -136,16 +140,26 @@ public class KryptonGoldCalcator {
     for (double var : avgCny) {
       System.out.print(decimalFormat.format(var) + "\t\t");
     }
+    System.out.println();
+    System.out.print("取整氪金\t" );
+    for (int i = 0; i < 7; i++ ) {
+      System.out.print(decimalFormat.format(( averyBuyCont[i] * cny[i] )) + "\t\t" );
+    }
     // dlc最少购买数量
     System.out.println();
     System.out.print("最少购买数量\t");
-    for (int i = 0; i < 7; i++ ) {
-      System.out.print(decimalFormat.format(plexMinNum / plex[i]) + "\t\t");
+    for (int var: plex ) {
+      System.out.print(decimalFormat.format(plexMinNum / var) + "\t\t");
     }
     System.out.println();
-    System.out.print("平均氪金\t");
+    System.out.print("最少氪金\t");
     for (double var : minCny) {
       System.out.print(decimalFormat.format(var) + "\t\t");
+    }
+    System.out.println();
+    System.out.print("取整氪金\t");
+    for(int i = 0; i < 7; i++ ) {
+      System.out.print(decimalFormat.format(( cny[i] * minBuyCont[i] )) + "\t\t" );
     }
     System.out.println();
   }
