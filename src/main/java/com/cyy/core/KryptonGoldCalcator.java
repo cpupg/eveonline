@@ -89,7 +89,7 @@ public class KryptonGoldCalcator {
     // 氪金项目
     int plex[] = {110, 240, 500, 1100, 2860, 7430, 15400};
     // 氪金列表
-    double usd[] = {4.99, 9.99, 19.99, 39.99, 99.99, 249.99, 499.99};
+    double usd[] = {3.74, 7.49, 14.99, 29.99, 74.99, 212.49, 424.99};
     double cny[] = new double[7];
     // PLEX人民币均价
     double average[] = new double[7];
